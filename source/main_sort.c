@@ -22,18 +22,25 @@ void not_recursive_sort(t_ab *ab)
     int i;
 
     i = 0;
+    printf("min: %d\n", ab->a->min);
+    printf("max: %d\n", ab->a->max);
+    printf("size: %d\n", ab->a->size);
+    printf("count: %d\n", ab->count);
+    printf("sum: %d\n", ab->sum);
     while(ab->a->size > 5)
     {
-        if(ab->a->head->cost <= ab->sum)
+        if(ab->a->head->cost <= ab->sum * (i / ab->a->size + 1))
         {
             pb(ab);
+            printf("pb\n");
             if(ab->b->head->cost > 0 && ab->b->head->cost <= ab->sum / 2)
                 rb(ab);
         }
         else
             ra(ab);
-        if(i == 100)
-            i = 0;
         i++;
     }
+    get_new_min(ab);
+    get_new_max(ab);
+    sort_till_five(ab);
 }

@@ -44,23 +44,22 @@ void get_new_min(t_ab *ab)
 {
     t_dbl_list *tmp;
 
-    printf("data = %d\n", ab->a->head->data);
     tmp = ab->a->head;
     while(1)
     {
         ab->a->min++;
-        printf("data = %d\n", ab->a->head->data);
         while(ab->a->head)
         {
             if(ab->a->head->data == ab->a->min)
+            {
+                ab->a->head = tmp;
                 return;
+            }
             ab->a->head = ab->a->head->next;
         }
         ab->a->head = tmp;
     }
-    printf("data = %d\n", ab->a->head->data);
     ab->a->head = tmp;
-    printf("data = %d\n", ab->a->head->data);
 }
 void get_new_max(t_ab *ab)
 {
@@ -73,7 +72,10 @@ void get_new_max(t_ab *ab)
         while(ab->a->head)
         {
             if(ab->a->head->data == ab->a->max)
+            {
+                ab->a->head = tmp;
                 return;
+            }
             ab->a->head = ab->a->head->next;
         }
         ab->a->head = tmp;
@@ -93,5 +95,6 @@ bool is_sorted(t_ab *ab)
         }
         ab->a->head = ab->a->head->next;
     }
+    ab->a->head = ab->a->tmp;
     return (true);
 }

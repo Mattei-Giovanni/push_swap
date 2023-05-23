@@ -35,6 +35,8 @@ int main(int argc, char **argv)
             init_ab(ab);
             if (ab->a->size >= 2 && ab->a->size <= 5)
                 sort_till_five(ab);
+            else
+                first_phase(ab);
         }
         for(int i = 0; i < ab->a->size; i++)
         {

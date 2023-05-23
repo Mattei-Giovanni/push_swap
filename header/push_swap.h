@@ -55,6 +55,7 @@ void    get_new_min(t_ab *ab);
 void    get_new_max(t_ab *ab);
 bool    is_sorted(t_ab *ab);
 /* sorting advanced */
+void    first_phase(t_ab *ab);
 void    not_recursive_sort(t_ab *ab);
 /* list */
 void    add_node(t_ab *ab, int data);

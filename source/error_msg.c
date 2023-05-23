@@ -20,7 +20,7 @@ void    error_msg(int error)
     else if (error == -2)
         write(1, "Error, wrong input, digits needed\n", 34);
     else if (error == -3)
-        write(1, "", 0);
+        write(1, "Error, duplicate digits", 0);
     else if (error == -4)
         write(1, "", 0);
     else if (error == -5)

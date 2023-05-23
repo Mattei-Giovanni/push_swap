@@ -27,6 +27,8 @@ void pb(t_ab *ab)
 {
     t_dbl_list *tmp;
     tmp = ab->a->head;
+    if(ab->b->head == NULL)
+        ab->b->tail = tmp;
     ab->a->head = ab->a->head->next;
     tmp->next = ab->b->head;
     ab->b->head = tmp;

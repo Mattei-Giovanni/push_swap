@@ -39,6 +39,8 @@ void    init(t_ab *ab)
     ab->a->tail = NULL;
     ab->b->head = NULL;
     ab->b->tail = NULL;
+    ab->a->tmp = NULL;
+    ab->b->tmp = NULL;
     ab->a->size = 0;
     ab->b->size = 0;
     ab->a->max = 0;
@@ -73,7 +75,10 @@ void    init_ab(t_ab *ab)
     ab->a->head = ab->a->tmp;
     ab->count = (5 + (ab->a->size / 100)) / 2;
     ab->sum = ab->a->size / ab->count;
+    printf("count: %d\n", ab->count);
+    printf("sum: %d\n", ab->sum);
     init_cost(ab);
+    ab->sorted = is_sorted(ab);
 }
 
 void init_cost(t_ab *ab)
@@ -82,24 +87,19 @@ void init_cost(t_ab *ab)
     int tmp;
 
     i = 0;
+    tmp = ab->a->min;
+    ab->a->tmp = ab->a->head;
     while(i < ab->a->size)
     {
-        if(i > 1)
-            ab->a->head = ab->a->tmp;
-        ab->a->tmp = ab->a->head;
-        tmp = ab->a->head->data;
-        while(ab && ab->a && ab->a->head)
+        while(ab->a->head != NULL && ab->a)
         {
-            if(ab->a->head->data < tmp)
-                tmp = ab->a->head->data;
-            ab->a->head = ab->a->head->next;
-        }
-        ab->a->head = ab->a->tmp;
-        while(ab && ab->a && ab->a->head)
-        {
-            if(ab->a->head->data == tmp)
+            printf("data: %d\n", ab->a->head->data);
+            printf("min: %d\n\n", ab->a->min);
+            if(ab->a->head->data == ab->a->min)
             {
                 ab->a->head->cost = i;
+                printf("cost: %d\n", ab->a->head->cost);
+                ab->a->min++;
                 break;
             }
             ab->a->head = ab->a->head->next;
@@ -107,6 +107,8 @@ void init_cost(t_ab *ab)
         ab->a->head = ab->a->tmp;
         i++;
     }
+    ab->a->head = ab->a->tmp;
+    ab->a->min = tmp;
 }
 
 void init_argv(t_ab *ab, int argc, char **argv)

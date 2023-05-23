@@ -20,10 +20,8 @@ void sort_two(t_ab *ab)
 
 void sort_three(t_ab *ab)
 {
-    printf("ab->a->head->data = %d\n", ab->a->head->data);
-    printf("ab->a->tail->data = %d\n", ab->a->tail->data);
-    printf("min = %d\n", ab->a->min);
-    printf("max = %d\n", ab->a->max);
+    if(is_sorted(ab))
+        return ;
     if(ab->a->head->data == ab->a->min)
     {
         print_move(ab, "sa");
@@ -57,12 +55,8 @@ void sort_four(t_ab *ab)
         print_move(ab, "rra");
     while(ab->a->head->data != ab->a->min)
         print_move(ab, "ra");
-    if(is_sorted(ab) == false)
+    if(ab->sorted == false)
     {
-        printf("ab->a->head->data = %d\n", ab->a->head->data);
-        printf("ab->a->tail->data = %d\n", ab->a->tail->data);
-        printf("min = %d\n", ab->a->min);
-        printf("max = %d\n", ab->a->max);
         print_move(ab, "pb");
         get_new_min(ab);
         sort_three(ab);
@@ -73,31 +67,38 @@ void sort_four(t_ab *ab)
 
 void sort_five(t_ab *ab)
 {
-    if(ab->a->head->next->data == ab->a->min)
-        print_move(ab, "sa");
-    else if(ab->a->tail->data == ab->a->min)
-        print_move(ab, "rra");
-    else
-    {
-        while(ab->a->head->data != ab->a->min)
-            print_move(ab, "ra");
-        print_move(ab, "pb");
-    }
+    ab->a->tmp = ab->a->head;
     if(ab->a->head->next->data == ab->a->max)
         print_move(ab, "sa");
     else if(ab->a->tail->data == ab->a->max)
         print_move(ab, "rra");
-    else
+    while(ab->a->head->data != ab->a->max)
+        print_move(ab, "ra");
+    print_move(ab, "pb");
+    if(ab->a->head->next->data == ab->a->min)
+        print_move(ab, "sa");
+    else if(ab->a->tail->data == ab->a->min)
+        print_move(ab, "rra");
+    while(ab->a->head->data != ab->a->min)
+        print_move(ab, "ra");
+    print_move(ab, "pb");
+    if(ab->sorted == false)
     {
-        while(ab->a->head->data != ab->a->max)
-            print_move(ab, "ra");
-        print_move(ab, "pb");
+        printf("ab->a->size = %d\n", ab->a->size);
+        printf("ab->b->size = %d\n", ab->b->size);
+        printf("ab->a->head->data = %d\n", ab->a->head->data);
+        printf("ab->a->tail->data = %d\n", ab->a->tail->data);
+        printf("ab->b->head->data = %d\n", ab->b->head->data);
+        printf("ab->b->tail->data = %d\n", ab->b->tail->data);
+        printf("ab->a->min = %d\n", ab->a->min);
+        printf("ab->a->max = %d\n", ab->a->max);
+        get_new_min(ab);
+        get_new_max(ab);
+        sort_three(ab);
+        print_move(ab, "pa");
+        print_move(ab, "pa");
         print_move(ab, "ra");
     }
-    get_new_min(ab);
-    get_new_max(ab);
-    sort_three(ab);
-    print_move(ab, "pa");
 }
 
 void sort_till_five(t_ab *ab)
