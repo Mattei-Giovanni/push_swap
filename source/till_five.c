@@ -15,7 +15,7 @@
 void sort_two(t_ab *ab)
 {
     if(ab->a->head->data == ab->a->max)
-        print_move(ab, "sa");
+        print_move(ab, 9);
 }
 
 void sort_three(t_ab *ab)
@@ -24,25 +24,25 @@ void sort_three(t_ab *ab)
         return ;
     if(ab->a->head->data == ab->a->min)
     {
-        print_move(ab, "sa");
-        print_move(ab, "ra");
+        print_move(ab, 9);
+        print_move(ab, 3);
     }
     else if(ab->a->head->data == ab->a->max)
     {
         if(ab->a->tail->data == ab->a->min)
         {
-            print_move(ab, "sa");
-            print_move(ab, "rra");
+            print_move(ab, 9);
+            print_move(ab, 6);
         }
         else
-            print_move(ab, "ra");
+            print_move(ab, 3);
     }
     else
     {
         if(ab->a->tail->data == ab->a->max)
-            print_move(ab, "sa");
+            print_move(ab, 9);
         else
-            print_move(ab, "rra");
+            print_move(ab, 6);
     }
 }
 
@@ -50,46 +50,45 @@ void sort_four(t_ab *ab)
 {
     ab->a->tmp = ab->a->head;
     if(ab->a->head->next->data == ab->a->min)
-        print_move(ab, "sa");
+        print_move(ab, 9);
     else if(ab->a->tail->data == ab->a->min)
-        print_move(ab, "rra");
+        print_move(ab, 6);
     while(ab->a->head->data != ab->a->min)
-        print_move(ab, "ra");
+        print_move(ab, 3);
     if(ab->sorted == false)
     {
-        print_move(ab, "pb");
+        print_move(ab, 1);
         get_new_min(ab);
         sort_three(ab);
-        print_move(ab, "pa");
+        print_move(ab, 2);
     }
     ab->a->head = ab->a->tmp;
 }
 
 void sort_five(t_ab *ab)
 {
-    ab->a->tmp = ab->a->head;
     if(ab->a->head->next->data == ab->a->max)
-        print_move(ab, "sa");
+        print_move(ab, 9);
     else if(ab->a->tail->data == ab->a->max)
-        print_move(ab, "rra");
+        print_move(ab, 6);
     while(ab->a->head->data != ab->a->max)
-        print_move(ab, "ra");
-    print_move(ab, "pb");
+        print_move(ab, 3);
+    print_move(ab, 1);
     if(ab->a->head->next->data == ab->a->min)
-        print_move(ab, "sa");
+        print_move(ab, 9);
     else if(ab->a->tail->data == ab->a->min)
-        print_move(ab, "rra");
+        print_move(ab, 6);
     while(ab->a->head->data != ab->a->min)
-        print_move(ab, "ra");
-    print_move(ab, "pb");
+        print_move(ab, 3);
+    print_move(ab, 1);
     if(ab->sorted == false)
     {
         get_new_min(ab);
         get_new_max(ab);
         sort_three(ab);
-        print_move(ab, "pa");
-        print_move(ab, "pa");
-        print_move(ab, "ra");
+        print_move(ab, 2);
+        print_move(ab, 2);
+        print_move(ab, 3);
     }
 }
 

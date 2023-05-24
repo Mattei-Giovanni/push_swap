@@ -33,6 +33,7 @@ typedef struct s_st
     t_dbl_list	*tail;
     int    min;
     int    max;
+    int fixed_size;
     int	size;
 }   t_st;
 
@@ -40,8 +41,11 @@ typedef struct s_ab
 {
     t_st	*a;
     t_st	*b;
+    char **arr;
+    int i;
     int count;
     int sum;
+    int multiplier;
     bool sorted;
 }   t_ab;
 
@@ -59,6 +63,7 @@ void    first_phase(t_ab *ab);
 void    not_recursive_sort(t_ab *ab);
 /* list */
 void    add_node(t_ab *ab, int data);
+void    move_to_do(t_ab *ab, int move);
 /* init */
 void    init(t_ab *ab);
 void    init_ab(t_ab *ab);
@@ -79,6 +84,7 @@ void    rra(t_ab *ab);
 void    rrb(t_ab *ab);
 void    rrr(t_ab *ab);
 /* print */
-void    print_move(t_ab *ab, char *move);
+void    print_move(t_ab *ab, int move);
+void    actually_print_moves(t_ab *ab);
 
 #endif

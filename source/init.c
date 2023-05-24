@@ -35,6 +35,7 @@ void    init(t_ab *ab)
 {
     ab->a = malloc(sizeof(t_st));
     ab->b = malloc(sizeof(t_st));
+    ab->arr = malloc(sizeof(char *) * ((ab->a->size * ab->a->size) / (ab->a->size / 20)));
     ab->a->head = NULL;
     ab->a->tail = NULL;
     ab->b->head = NULL;
@@ -84,10 +85,10 @@ void init_cost(t_ab *ab)
     int i;
     int tmp;
 
-    i = 0;
+    i = 1;
     tmp = ab->a->min;
     ab->a->tmp = ab->a->head;
-    while(i < ab->a->size)
+    while(i < ab->a->size + 1)
     {
         while(ab->a->head != NULL && ab->a)
         {
@@ -104,6 +105,7 @@ void init_cost(t_ab *ab)
     }
     ab->a->head = ab->a->tmp;
     ab->a->min = tmp;
+    ab->a->fixed_size = ab->a->size;
 }
 
 void init_argv(t_ab *ab, int argc, char **argv)

@@ -12,32 +12,42 @@
 
 #include "../header/push_swap.h"
 
-void    print_move(t_ab *ab, char *move)
+static int  ft_strcmp(char *s1, char *s2)
 {
-    if (move[0] == 'p' && move[1] == 'a')
-        pa(ab);
-    else if (move[0] == 'p' && move[1] == 'b')
-        pb(ab);
-    else if (move[0] == 's' && move[1] == 'a')
-        sa(ab);
-    else if (move[0] == 's' && move[1] == 'b')
-        sb(ab);
-    else if (move[0] == 's' && move[1] == 's')
-        ss(ab);
-    else if (move[0] == 'r' && move[1] == 'a')
-        ra(ab);
-    else if (move[0] == 'r' && move[1] == 'b')
-        rb(ab);
-    else if (move[0] == 'r' && move[1] == 'r' && ft_strlen(move) == 2)
-        rr(ab);
-    else if (move[0] == 'r' && move[1] == 'r' && move[2] == 'a')
-        rra(ab);
-    else if (move[0] == 'r' && move[1] == 'r' && move[2] == 'b')
-        rrb(ab);
-    else if (move[0] == 'r' && move[1] == 'r' && move[2] == 'r')
-        rrr(ab);
-    write(1, move, ft_strlen(move));
-    write(1, "\n", 1);
+    int i;
+    i = 0;
+    while (s1[i] == s2[i] && s1[i] != '\0' && s2[i] != '\0')
+        i++;
+    return (s1[i] - s2[i]);
+}
+
+void    actually_print_moves(t_ab *ab)
+{
+    int i;
+
+    i = 0;
+    while (i < ab->i)
+    {
+        if(i > 0 && ((ft_strcmp(ab->arr[i], "ra") && ft_strcmp(ab->arr[i + 1], "rb")) || (ft_strcmp(ab->arr[i], "rb") && ft_strcmp(ab->arr[i + 1], "ra"))))
+        {
+            write(1, "rr\n", 3);
+            i++;
+        }
+        else if(i > 0 && ((ft_strcmp(ab->arr[i], "rra") && ft_strcmp(ab->arr[i + 1], "rrb")) || (ft_strcmp(ab->arr[i], "rrb") && ft_strcmp(ab->arr[i + 1], "rra"))))
+        {
+            write(1, "rrr\n", 4);
+            i++;
+        }
+        else if(i > 0 && ((ft_strcmp(ab->arr[i], "sa") && ft_strcmp(ab->arr[i + 1], "sb")) || (ft_strcmp(ab->arr[i], "sb") && ft_strcmp(ab->arr[i + 1], "sa"))))
+        {
+            write(1, "ss\n", 3);
+            i++;
+        }
+        else
+            write(1, ab->arr[i], ft_strlen(ab->arr[i]));
+        i++;
+
+    }
 }
 
 void get_new_min(t_ab *ab)

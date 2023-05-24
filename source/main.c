@@ -38,11 +38,22 @@ int main(int argc, char **argv)
             else
                 first_phase(ab);
         }
+        actually_print_moves(ab);
+        /* printf("STACK A: \n");
         for(int i = 0; i < ab->a->size; i++)
         {
             printf("%d ", ab->a->head->data);
+            printf("cost: %d\n", ab->a->head->cost);
             ab->a->head = ab->a->head->next;
         }
         printf("\n");
+        printf("STACK B: \n");
+        for(int i = 0; i < ab->b->size; i++)
+        {
+            printf("%d ", ab->b->head->data);
+            printf("cost: %d\n", ab->b->head->cost);
+            ab->b->head = ab->b->head->next;
+        }
+        printf("\n"); */
     }
 }
