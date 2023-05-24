@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gmattei <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: gmattei <giovanni.mattei.job@gmail.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/18 20:05:09 by gmattei           #+#    #+#             */
-/*   Updated: 2023/04/18 20:05:10 by gmattei          ###   ########.fr       */
+/*   Updated: 2023/05/23 22:46:28 by gmattei          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,5 +43,6 @@ int main(int argc, char **argv)
             printf("%d ", ab->a->head->data);
             ab->a->head = ab->a->head->next;
         }
+        printf("\n");
     }
 }

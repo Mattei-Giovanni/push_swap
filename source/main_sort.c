@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main_sort.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gmattei <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: gmattei <giovanni.mattei.job@gmail.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 13:44:40 by gmattei           #+#    #+#             */
-/*   Updated: 2023/04/20 13:44:41 by gmattei          ###   ########.fr       */
+/*   Updated: 2023/05/23 22:52:05 by gmattei          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,17 +22,11 @@ void not_recursive_sort(t_ab *ab)
     int i;
 
     i = 0;
-    printf("min: %d\n", ab->a->min);
-    printf("max: %d\n", ab->a->max);
-    printf("size: %d\n", ab->a->size);
-    printf("count: %d\n", ab->count);
-    printf("sum: %d\n", ab->sum);
     while(ab->a->size > 5)
     {
         if(ab->a->head->cost <= ab->sum * (i / ab->a->size + 1))
         {
             pb(ab);
-            printf("pb\n");
             if(ab->b->head->cost > 0 && ab->b->head->cost <= ab->sum / 2)
                 rb(ab);
         }

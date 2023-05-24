@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   till_five.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gmattei <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: gmattei <giovanni.mattei.job@gmail.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 16:56:10 by gmattei           #+#    #+#             */
-/*   Updated: 2023/04/17 16:56:11 by gmattei          ###   ########.fr       */
+/*   Updated: 2023/05/23 22:46:09 by gmattei          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,14 +84,6 @@ void sort_five(t_ab *ab)
     print_move(ab, "pb");
     if(ab->sorted == false)
     {
-        printf("ab->a->size = %d\n", ab->a->size);
-        printf("ab->b->size = %d\n", ab->b->size);
-        printf("ab->a->head->data = %d\n", ab->a->head->data);
-        printf("ab->a->tail->data = %d\n", ab->a->tail->data);
-        printf("ab->b->head->data = %d\n", ab->b->head->data);
-        printf("ab->b->tail->data = %d\n", ab->b->tail->data);
-        printf("ab->a->min = %d\n", ab->a->min);
-        printf("ab->a->max = %d\n", ab->a->max);
         get_new_min(ab);
         get_new_max(ab);
         sort_three(ab);
@@ -103,7 +95,6 @@ void sort_five(t_ab *ab)
 
 void sort_till_five(t_ab *ab)
 {
-    printf("sort_till_five\n");
     if(ab->sorted == true)
         return ;
     if (ab->a->size == 2)

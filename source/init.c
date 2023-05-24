@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gmattei <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: gmattei <giovanni.mattei.job@gmail.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/18 16:43:14 by gmattei           #+#    #+#             */
-/*   Updated: 2023/04/18 16:43:15 by gmattei          ###   ########.fr       */
+/*   Updated: 2023/05/23 22:45:03 by gmattei          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,8 +75,6 @@ void    init_ab(t_ab *ab)
     ab->a->head = ab->a->tmp;
     ab->count = (5 + (ab->a->size / 100)) / 2;
     ab->sum = ab->a->size / ab->count;
-    printf("count: %d\n", ab->count);
-    printf("sum: %d\n", ab->sum);
     init_cost(ab);
     ab->sorted = is_sorted(ab);
 }
@@ -93,12 +91,9 @@ void init_cost(t_ab *ab)
     {
         while(ab->a->head != NULL && ab->a)
         {
-            printf("data: %d\n", ab->a->head->data);
-            printf("min: %d\n\n", ab->a->min);
             if(ab->a->head->data == ab->a->min)
             {
                 ab->a->head->cost = i;
-                printf("cost: %d\n", ab->a->head->cost);
                 ab->a->min++;
                 break;
             }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   move_printer.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gmattei <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: gmattei <giovanni.mattei.job@gmail.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 12:09:51 by gmattei           #+#    #+#             */
-/*   Updated: 2023/04/20 12:09:52 by gmattei          ###   ########.fr       */
+/*   Updated: 2023/05/23 22:51:20 by gmattei          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,6 @@ void get_new_min(t_ab *ab)
     tmp = ab->a->head;
     while(1)
     {
-        ab->a->min++;
         while(ab->a->head)
         {
             if(ab->a->head->data == ab->a->min)
@@ -57,6 +56,7 @@ void get_new_min(t_ab *ab)
             }
             ab->a->head = ab->a->head->next;
         }
+        ab->a->min++;
         ab->a->head = tmp;
     }
     ab->a->head = tmp;
@@ -68,7 +68,6 @@ void get_new_max(t_ab *ab)
     tmp = ab->a->head;
     while(1)
     {
-        ab->a->max--;
         while(ab->a->head)
         {
             if(ab->a->head->data == ab->a->max)
@@ -78,6 +77,7 @@ void get_new_max(t_ab *ab)
             }
             ab->a->head = ab->a->head->next;
         }
+        ab->a->max--;
         ab->a->head = tmp;
     }
     ab->a->head = tmp;
