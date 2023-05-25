@@ -35,7 +35,6 @@ void    init(t_ab *ab)
 {
     ab->a = malloc(sizeof(t_st));
     ab->b = malloc(sizeof(t_st));
-    ab->arr = malloc(sizeof(char *) * ((ab->a->size * ab->a->size) / (ab->a->size / 20)));
     ab->a->head = NULL;
     ab->a->tail = NULL;
     ab->b->head = NULL;

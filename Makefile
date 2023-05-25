@@ -22,7 +22,7 @@ MOVES_DIR = moves/
 
 LIB_PATH = $(LIB_DIR)$(LIB)
 
-SRCS_FILES = init.c main.c till_five.c push.c rotate.c swap.c rev_rotate.c move_printer.c error_msg.c main_sort.c print_move.c
+SRCS_FILES = init.c main.c till_five.c push.c rotate.c swap.c rev_rotate.c move_printer.c error_msg.c main_sort.c
 
 SRCS = $(addprefix $(SRCS_DIR), $(SRCS_FILES))
 

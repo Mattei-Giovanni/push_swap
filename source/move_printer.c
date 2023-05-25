@@ -12,42 +12,31 @@
 
 #include "../header/push_swap.h"
 
-static int  ft_strcmp(char *s1, char *s2)
+void    print_move(t_ab *ab, int move)
 {
-    int i;
-    i = 0;
-    while (s1[i] == s2[i] && s1[i] != '\0' && s2[i] != '\0')
-        i++;
-    return (s1[i] - s2[i]);
-}
-
-void    actually_print_moves(t_ab *ab)
-{
-    int i;
-
-    i = 0;
-    while (i < ab->i)
-    {
-        if(i > 0 && ((ft_strcmp(ab->arr[i], "ra") && ft_strcmp(ab->arr[i + 1], "rb")) || (ft_strcmp(ab->arr[i], "rb") && ft_strcmp(ab->arr[i + 1], "ra"))))
-        {
-            write(1, "rr\n", 3);
-            i++;
-        }
-        else if(i > 0 && ((ft_strcmp(ab->arr[i], "rra") && ft_strcmp(ab->arr[i + 1], "rrb")) || (ft_strcmp(ab->arr[i], "rrb") && ft_strcmp(ab->arr[i + 1], "rra"))))
-        {
-            write(1, "rrr\n", 4);
-            i++;
-        }
-        else if(i > 0 && ((ft_strcmp(ab->arr[i], "sa") && ft_strcmp(ab->arr[i + 1], "sb")) || (ft_strcmp(ab->arr[i], "sb") && ft_strcmp(ab->arr[i + 1], "sa"))))
-        {
-            write(1, "ss\n", 3);
-            i++;
-        }
-        else
-            write(1, ab->arr[i], ft_strlen(ab->arr[i]));
-        i++;
-
-    }
+    if(move == 1)
+        write(1, "pb\n", 3);
+    else if(move == 2)
+        write(1, "pa\n", 3);
+    else if(move == 3)
+        write(1, "ra\n", 3);
+    else if(move == 4)
+        write(1, "rb\n", 3);
+    else if(move == 5)
+        write(1, "rr\n", 3);
+    else if(move == 6)
+        write(1, "rra\n", 4);
+    else if(move == 7)
+        write(1, "rrb\n", 4);
+    else if(move == 8)
+        write(1, "rrr\n", 4);
+    else if(move == 9)
+        write(1, "sa\n", 3);
+    else if(move == 10)
+        write(1, "sb\n", 3);
+    else if(move == 11)
+        write(1, "ss\n", 3);
+    ab->prev_move = move;
 }
 
 void get_new_min(t_ab *ab)

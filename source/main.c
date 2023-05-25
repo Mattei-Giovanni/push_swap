@@ -38,7 +38,6 @@ int main(int argc, char **argv)
             else
                 first_phase(ab);
         }
-        actually_print_moves(ab);
         /* printf("STACK A: \n");
         for(int i = 0; i < ab->a->size; i++)
         {

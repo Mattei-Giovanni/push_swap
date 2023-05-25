@@ -41,12 +41,12 @@ typedef struct s_ab
 {
     t_st	*a;
     t_st	*b;
-    char **arr;
     int i;
     int count;
     int sum;
     int multiplier;
     bool sorted;
+    int prev_move;
 }   t_ab;
 
 /* sorting default */
@@ -85,6 +85,5 @@ void    rrb(t_ab *ab);
 void    rrr(t_ab *ab);
 /* print */
 void    print_move(t_ab *ab, int move);
-void    actually_print_moves(t_ab *ab);
 
 #endif
