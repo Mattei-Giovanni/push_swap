@@ -23,30 +23,31 @@ typedef struct s_dbl_list
 {
     int     data;
     int     cost;
-    struct s_dbl_list	*next;
+    int     movecost;
+    struct s_dbl_list   *next;
 }   t_dbl_list;
 
 typedef struct s_st
 {
     t_dbl_list	*head;
     t_dbl_list  *tmp;
-    t_dbl_list	*tail;
-    int    min;
-    int    max;
-    int fixed_size;
-    int	size;
+    t_dbl_list  *tail;
+    int     min;
+    int     max;
+    int     fixed_size;
+    int     size;
 }   t_st;
 
 typedef struct s_ab
 {
     t_st	*a;
     t_st	*b;
-    int i;
-    int count;
-    int sum;
-    int multiplier;
-    bool sorted;
-    int prev_move;
+    int     i;
+    int     count;
+    int     sum;
+    int     multiplier;
+    bool    sorted;
+    char    *pmove;
 }   t_ab;
 
 /* sorting default */
@@ -84,6 +85,6 @@ void    rra(t_ab *ab);
 void    rrb(t_ab *ab);
 void    rrr(t_ab *ab);
 /* print */
-void    print_move(t_ab *ab, int move);
+void    print_move(t_ab *ab, char *move);
 
 #endif

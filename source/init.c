@@ -105,6 +105,7 @@ void init_cost(t_ab *ab)
     ab->a->head = ab->a->tmp;
     ab->a->min = tmp;
     ab->a->fixed_size = ab->a->size;
+    ab->multiplier = ab->sum;
 }
 
 void init_argv(t_ab *ab, int argc, char **argv)
