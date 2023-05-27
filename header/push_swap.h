@@ -42,16 +42,15 @@ typedef struct s_ab
 {
     t_st	*a;
     t_st	*b;
-    int     i;
     int     count;
     int     sum;
     int     multiplier;
     bool    sorted;
     char    *pmove;
+    int     i;
 }   t_ab;
 
 /* sorting default */
-void    sort_two(t_ab *ab);
 void    sort_three(t_ab *ab);
 void    sort_four(t_ab *ab);
 void    sort_five(t_ab *ab);
@@ -59,6 +58,7 @@ void    sort_till_five(t_ab *ab);
 void    get_new_min(t_ab *ab);
 void    get_new_max(t_ab *ab);
 bool    is_sorted(t_ab *ab);
+bool    is_reverse_sorted(t_ab *ab);
 /* sorting advanced */
 void    first_phase(t_ab *ab);
 void    not_recursive_sort(t_ab *ab);

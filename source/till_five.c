@@ -12,10 +12,21 @@
 
 #include "../header/push_swap.h"
 
-void sort_two(t_ab *ab)
+bool is_sorted(t_ab *ab)
 {
-    if(ab->a->head->data == ab->a->max)
-        print_move(ab, "sa");
+
+    ab->a->tmp = ab->a->head;
+    while(ab->a->head->next)
+    {
+        if(ab->a->head->data > ab->a->head->next->data)
+        {
+            ab->a->head = ab->a->tmp;
+            return (false);
+        }
+        ab->a->head = ab->a->head->next;
+    }
+    ab->a->head = ab->a->tmp;
+    return (true);
 }
 
 void sort_three(t_ab *ab)
@@ -97,7 +108,10 @@ void sort_till_five(t_ab *ab)
     if(ab->sorted == true)
         return ;
     if (ab->a->size == 2)
-        sort_two(ab);
+    {
+        if(ab->a->head->data == ab->a->max)
+            print_move(ab, "sa");
+    }
     else if (ab->a->size == 3)
         sort_three(ab);
     else if (ab->a->size == 4)

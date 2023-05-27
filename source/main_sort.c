@@ -14,8 +14,11 @@
 
 void first_phase(t_ab *ab)
 {
-    not_recursive_sort(ab);
-    //move_cost_calc(ab);
+    //while(!is_sorted(ab))
+    //{
+        //move_cost_calc(ab);
+        not_recursive_sort(ab);
+    //}
 }
 
 void not_recursive_sort(t_ab *ab)
@@ -33,12 +36,7 @@ void not_recursive_sort(t_ab *ab)
         if(ab->a->head->cost <= ab->multiplier)
         {
             print_move(ab, "pb");
-            if(ab->b->size > 1 && ab->b->head->cost <= (ab->multiplier - ab->sum / 2) && ab->a->head->cost > ab->multiplier)
-            {
-                print_move(ab, "rr");
-                i++;
-            }
-            else if(ab->b->head->cost <= (ab->multiplier - ab->sum / 2))
+            if(ab->b->head->cost <= (ab->multiplier - ab->sum / 2))
                 print_move(ab, "rb");
         }
         else

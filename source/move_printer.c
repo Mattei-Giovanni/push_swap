@@ -12,8 +12,34 @@
 
 #include "../header/push_swap.h"
 
+void    actually_print_move(t_ab *ab, char *move)
+{
+    if(ft_strlen(move) == 2 && move [0] == 'r' && ab->pmove [0] == 'r' &&((move[1] == 'a' && ab->pmove[1] == 'b') || (move[1] == 'b' && ab->pmove[1] == 'a')))
+    {
+        move = "rr";
+        ft_printf("rr\n");
+    }
+    else if(ft_strlen(move) == 3 && move [0] == 'r' && ab->pmove [0] == 'r' &&((move[2] == 'a' && ab->pmove[2] == 'b') || (move[2] == 'b' && ab->pmove[2] == 'a')))
+    {
+        move = "rrr";
+        ft_printf("rrr\n");
+    }
+    else if((move[0] != 'r' || (move[0] == 'r' && move[ft_strlen(move)] == 'r')))
+    {
+        if(ab->pmove[0] == 'r' && ab->pmove[ft_strlen(ab->pmove) - 1] != 'r')
+            ft_printf("%s\n", ab->pmove);
+        ft_printf("%s\n", move);
+    }
+    else if((move[0] == 'r' && ab->pmove[0] == 'r' && ab->pmove[ft_strlen(ab->pmove) - 1] != 'r'))
+        ft_printf("%s\n", move);
+    if(move[0] == 'r' && move[1] == 'a' && ab->a->size == 5)
+        ft_printf("ra\n");
+    ab->pmove = move;
+}
+
 void    print_move(t_ab *ab, char *move)
 {
+    ab->i = 0;
     if(move[0] == 'p' && move[1] == 'b')
         pb(ab);
     else if(move[0] == 'p' && move[1] == 'a')
@@ -36,8 +62,7 @@ void    print_move(t_ab *ab, char *move)
         sb(ab);
     else if(move[0] == 's' && move[1] == 's')
         ss(ab);
-    ab->pmove = move;
-    ft_printf("%s\n", move);
+    actually_print_move(ab, move);
 }
 
 void get_new_min(t_ab *ab)
@@ -81,20 +106,4 @@ void get_new_max(t_ab *ab)
         ab->a->head = tmp;
     }
     ab->a->head = tmp;
-}
-bool is_sorted(t_ab *ab)
-{
-
-    ab->a->tmp = ab->a->head;
-    while(ab->a->head->next)
-    {
-        if(ab->a->head->data > ab->a->head->next->data)
-        {
-            ab->a->head = ab->a->tmp;
-            return (false);
-        }
-        ab->a->head = ab->a->head->next;
-    }
-    ab->a->head = ab->a->tmp;
-    return (true);
 }

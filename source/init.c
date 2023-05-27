@@ -48,6 +48,8 @@ void    init(t_ab *ab)
     ab->b->max = 0;
     ab->b->min = 0;
     ab->sorted = true;
+    ab->i = 0;
+    ab->pmove = "no";
 }
 
 void    init_ab(t_ab *ab)
