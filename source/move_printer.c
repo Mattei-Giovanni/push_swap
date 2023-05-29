@@ -39,7 +39,6 @@ void    actually_print_move(t_ab *ab, char *move)
 
 void    print_move(t_ab *ab, char *move)
 {
-    ab->i = 0;
     if(move[0] == 'p' && move[1] == 'b')
         pb(ab);
     else if(move[0] == 'p' && move[1] == 'a')

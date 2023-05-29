@@ -35,6 +35,8 @@ void    init(t_ab *ab)
 {
     ab->a = malloc(sizeof(t_st));
     ab->b = malloc(sizeof(t_st));
+    ab->mov_a = malloc(sizeof(int) * 1000);
+    ab->mov_b = malloc(sizeof(int) * 1000);
     ab->a->head = NULL;
     ab->a->tail = NULL;
     ab->b->head = NULL;
@@ -75,7 +77,7 @@ void    init_ab(t_ab *ab)
             ab->a->min = ab->a->head->data;
     }
     ab->a->head = ab->a->tmp;
-    ab->count = (5 + (ab->a->size / 100)) / 2;
+    ab->count = (3 + (ab->a->size / 100)) / 2;
     ab->sum = ab->a->size / ab->count;
     init_cost(ab);
     ab->sorted = is_sorted(ab);

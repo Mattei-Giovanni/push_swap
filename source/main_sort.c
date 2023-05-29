@@ -16,8 +16,8 @@ void first_phase(t_ab *ab)
 {
     //while(!is_sorted(ab))
     //{
-        //move_cost_calc(ab);
         not_recursive_sort(ab);
+        move_cost_calc(ab);
     //}
 }
 
@@ -48,3 +48,39 @@ void not_recursive_sort(t_ab *ab)
     sort_till_five(ab);
 }
 
+void move_cost_calc(t_ab *ab)
+{
+    ab->i = 0;
+    ab->b->tmp = ab->b->head;
+    while(ab->i < ab->b->size)
+    {
+        ab->mov_b[ab->i] = ab->i;
+        if(ab->i >= ab->b->size / 2)
+            ab->mov_b[ab->i] = ab->b->size - ab->i;
+        printf("mov_b[%d] = %d\n", ab->i, ab->mov_b[ab->i]);
+        ab->i++;
+    }
+    ab->i = 0;
+    ab->j = 0;
+    while(ab->b->head)
+    {
+        ab->a->tmp = ab->a->head;
+        while(ab->a->head)
+        {
+            if(ab->a->head->data > ab->b->head->data)
+                ab->mov_a[ab->i] = 0;
+            else
+            {
+                while(ab->a->head->data < ab->b->head->data)
+                    ab->j++;
+                ab->mov_a[ab->i] = ab->j;
+                printf("mov_a[%d] = %d\n", ab->i, ab->mov_a[ab->i]);
+            }
+            ab->a->head = ab->a->head->next;
+        }
+        ab->i++;
+        ab->a->head = ab->a->tmp;
+        ab->b->head = ab->b->head->next;
+    }
+    ab->b->head = ab->b->tmp;
+}

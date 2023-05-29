@@ -48,6 +48,9 @@ typedef struct s_ab
     bool    sorted;
     char    *pmove;
     int     i;
+    int     j;
+    int *mov_a;
+    int *mov_b;
 }   t_ab;
 
 /* sorting default */
@@ -62,6 +65,7 @@ bool    is_reverse_sorted(t_ab *ab);
 /* sorting advanced */
 void    first_phase(t_ab *ab);
 void    not_recursive_sort(t_ab *ab);
+void    move_cost_calc(t_ab *ab);
 /* list */
 void    add_node(t_ab *ab, int data);
 void    move_to_do(t_ab *ab, int move);
