@@ -77,7 +77,7 @@ void    init_ab(t_ab *ab)
             ab->a->min = ab->a->head->data;
     }
     ab->a->head = ab->a->tmp;
-    ab->count = (3 + (ab->a->size / 100)) / 2;
+    ab->count = (5 + (ab->a->size / 100)) / 2;
     ab->sum = ab->a->size / ab->count;
     init_cost(ab);
     ab->sorted = is_sorted(ab);

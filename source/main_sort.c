@@ -51,36 +51,35 @@ void not_recursive_sort(t_ab *ab)
 void move_cost_calc(t_ab *ab)
 {
     ab->i = 0;
-    ab->b->tmp = ab->b->head;
     while(ab->i < ab->b->size)
     {
         ab->mov_b[ab->i] = ab->i;
         if(ab->i >= ab->b->size / 2)
             ab->mov_b[ab->i] = ab->b->size - ab->i;
-        printf("mov_b[%d] = %d\n", ab->i, ab->mov_b[ab->i]);
+        //printf("mov_b[%d] = %d\n", ab->i, ab->mov_b[ab->i]);
         ab->i++;
     }
     ab->i = 0;
-    ab->j = 0;
+    ab->b->tmp = ab->b->head;
     while(ab->b->head)
     {
         ab->a->tmp = ab->a->head;
+        ab->j = 0;
         while(ab->a->head)
         {
-            if(ab->a->head->data > ab->b->head->data)
-                ab->mov_a[ab->i] = 0;
-            else
+            if(ab->a->head->cost < ab->b->head->cost)
             {
-                while(ab->a->head->data < ab->b->head->data)
-                    ab->j++;
-                ab->mov_a[ab->i] = ab->j;
-                printf("mov_a[%d] = %d\n", ab->i, ab->mov_a[ab->i]);
+                ab->j++;
+                ab->a->head = ab->a->head->next;
             }
-            ab->a->head = ab->a->head->next;
+            else
+                break;
         }
+        ab->mov_a[ab->i] = ab->j;
+        //printf("mov_a[%d] = %d\n", ab->i, ab->mov_a[ab->i]);
         ab->i++;
-        ab->a->head = ab->a->tmp;
         ab->b->head = ab->b->head->next;
+        ab->a->head = ab->a->tmp;
     }
     ab->b->head = ab->b->tmp;
 }
