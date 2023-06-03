@@ -37,6 +37,7 @@ void    init(t_ab *ab)
     ab->b = malloc(sizeof(t_st));
     ab->mov_a = malloc(sizeof(int) * 1000);
     ab->mov_b = malloc(sizeof(int) * 1000);
+    ab->mov_all = malloc(sizeof(int) * 1000);
     ab->a->head = NULL;
     ab->a->tail = NULL;
     ab->b->head = NULL;

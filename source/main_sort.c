@@ -14,11 +14,66 @@
 
 void first_phase(t_ab *ab)
 {
-    //while(!is_sorted(ab))
+    not_recursive_sort(ab);
+    //while(ab->a->size != ab->a->fixed_size)
     //{
-        not_recursive_sort(ab);
+    for(int i = 0; i < 5; i++)
+    {
         move_cost_calc(ab);
-    //}
+        printf("START OTHER HALF\n");
+        ab->i = 1;
+        ab->count = 0;
+        while(ab->i < ab->b->size)
+        {
+            if(ab->mov_all[ab->i] <= ab->mov_all[ab->count])
+                ab->count = ab->i;
+            ab->i++;
+        }
+        printf("count = %d\n", ab->count);
+        printf("mov_a = %d\n", ab->mov_a[ab->count]);
+        printf("mov_b = %d\n", ab->mov_b[ab->count]);
+        printf("mov_all = %d\n", ab->mov_all[ab->count]);
+        printf("cost = %d\n", ab->b->head->cost);
+
+
+
+        while(ab->mov_b[ab->count] > 0)
+        {
+            if(ab->mov_b[ab->count] == 1 && ab->mov_a[ab->count + 1] < ab->mov_a[ab->count + 2])
+                print_move(ab, "sb");
+            else if(ab->count < ab->b->size / 2)
+                print_move(ab, "rb");
+            else
+                print_move(ab, "rrb");
+            ab->mov_b[ab->count]--;
+        }
+        print_move(ab, "pa");
+
+
+        
+        /* if(ab->count > ab->b->size / 2)
+        {
+            while(ab->mov_b[ab->count] > 0)
+            {
+                print_move(ab, "rrb");
+                ab->mov_b[ab->count]--;
+            }
+        }
+        else
+        {
+            while(ab->mov_b[ab->count] > 0)
+            {
+                print_move(ab, "rb");
+                ab->mov_b[ab->count]--;
+            }
+        }
+        print_move(ab, "pa");
+        while(ab->mov_a[ab->count] > 0)
+        {
+            print_move(ab, "ra");
+            ab->mov_a[ab->count]--;
+        } */
+    }
 }
 
 void not_recursive_sort(t_ab *ab)
@@ -33,7 +88,7 @@ void not_recursive_sort(t_ab *ab)
             i = ab->a->fixed_size - ab->a->size;
             ab->multiplier += ab->sum;
         }
-        if(ab->a->head->cost <= ab->multiplier)
+        if(ab->a->head->cost <= ab->multiplier && ab->a->head->cost < ab->a->max - 4)
         {
             print_move(ab, "pb");
             if(ab->b->head->cost <= (ab->multiplier - ab->sum / 2))
@@ -56,7 +111,6 @@ void move_cost_calc(t_ab *ab)
         ab->mov_b[ab->i] = ab->i;
         if(ab->i >= ab->b->size / 2)
             ab->mov_b[ab->i] = ab->b->size - ab->i;
-        //printf("mov_b[%d] = %d\n", ab->i, ab->mov_b[ab->i]);
         ab->i++;
     }
     ab->i = 0;
@@ -78,7 +132,7 @@ void move_cost_calc(t_ab *ab)
         if(ab->j >= ab->a->size / 2)
             ab->j = ab->a->size - ab->j;
         ab->mov_a[ab->i] = ab->j;
-        //printf("mov_a[%d] = %d\n", ab->i, ab->mov_a[ab->i]);
+        ab->mov_all[ab->i] = ab->mov_a[ab->i] + ab->mov_b[ab->i];
         ab->i++;
         ab->b->head = ab->b->head->next;
         ab->a->head = ab->a->tmp;

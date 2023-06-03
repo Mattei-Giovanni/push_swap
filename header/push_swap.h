@@ -23,7 +23,6 @@ typedef struct s_dbl_list
 {
     int     data;
     int     cost;
-    int     movecost;
     struct s_dbl_list   *next;
 }   t_dbl_list;
 
@@ -49,9 +48,10 @@ typedef struct s_ab
     char    *pmove;
     int     i;
     int     j;
-    int *mov_a;
-    int *mov_b;
-    int rot_buff;
+    int     *mov_a;
+    int     *mov_b;
+    int     *mov_all;
+    int     rot_buff;
 }   t_ab;
 
 /* sorting default */
@@ -91,5 +91,7 @@ void    rrb(t_ab *ab);
 void    rrr(t_ab *ab);
 /* print */
 void    print_move(t_ab *ab, char *move);
+void    actually_print_move(t_ab *ab, char *move);
+void    rotate_calc(t_ab *ab, char *move);
 
 #endif

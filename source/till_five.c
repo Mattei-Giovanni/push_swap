@@ -99,7 +99,8 @@ void sort_five(t_ab *ab)
         sort_three(ab);
         print_move(ab, "pa");
         print_move(ab, "pa");
-        print_move(ab, "ra");
+        ra(ab);
+        ft_printf("ra\n");
     }
 }
 
