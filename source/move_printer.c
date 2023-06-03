@@ -12,28 +12,28 @@
 
 #include "../header/push_swap.h"
 
+void    rotate_calc(t_ab *ab, char *move)
+{
+
+}
+
 void    actually_print_move(t_ab *ab, char *move)
 {
-    if(ft_strlen(move) == 2 && move [0] == 'r' && ab->pmove [0] == 'r' &&((move[1] == 'a' && ab->pmove[1] == 'b') || (move[1] == 'b' && ab->pmove[1] == 'a')))
+    if(!(move[0] == 'r' && move[ft_strlen(move) - 1] != 'r'))
     {
-        move = "rr";
-        ft_printf("rr\n");
+        ft_printf("%s\n", move);
+        ab->rot_buff = 0;
     }
-    else if(ft_strlen(move) == 3 && move [0] == 'r' && ab->pmove [0] == 'r' &&((move[2] == 'a' && ab->pmove[2] == 'b') || (move[2] == 'b' && ab->pmove[2] == 'a')))
+    else
     {
-        move = "rrr";
-        ft_printf("rrr\n");
-    }
-    else if((move[0] != 'r' || (move[0] == 'r' && move[ft_strlen(move)] == 'r')))
-    {
-        if(ab->pmove[0] == 'r' && ab->pmove[ft_strlen(ab->pmove) - 1] != 'r')
+        if(ab->rot_buff == 0 || (ab->rot_buff > 0 && ft_strcmp(ab->pmove, move) == 0))
+            ab->rot_buff++;
+        else if(ft_strcmp(ab->pmove, move) > 15 || ft_strcmp(ab->pmove, move) < -15)
+        {
             ft_printf("%s\n", ab->pmove);
-        ft_printf("%s\n", move);
+            ab->rot_buff = 1;
+        }
     }
-    else if((move[0] == 'r' && ab->pmove[0] == 'r' && ab->pmove[ft_strlen(ab->pmove) - 1] != 'r'))
-        ft_printf("%s\n", move);
-    if(move[0] == 'r' && move[1] == 'a' && ab->a->size == 5)
-        ft_printf("ra\n");
     ab->pmove = move;
 }
 

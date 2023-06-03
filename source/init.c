@@ -52,6 +52,7 @@ void    init(t_ab *ab)
     ab->sorted = true;
     ab->i = 0;
     ab->pmove = "no";
+    ab->rot_buff = 0;
 }
 
 void    init_ab(t_ab *ab)

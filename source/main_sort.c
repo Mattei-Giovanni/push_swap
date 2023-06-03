@@ -56,7 +56,7 @@ void move_cost_calc(t_ab *ab)
         ab->mov_b[ab->i] = ab->i;
         if(ab->i >= ab->b->size / 2)
             ab->mov_b[ab->i] = ab->b->size - ab->i;
-        printf("mov_b[%d] = %d\n", ab->i, ab->mov_b[ab->i]);
+        //printf("mov_b[%d] = %d\n", ab->i, ab->mov_b[ab->i]);
         ab->i++;
     }
     ab->i = 0;
@@ -78,7 +78,7 @@ void move_cost_calc(t_ab *ab)
         if(ab->j >= ab->a->size / 2)
             ab->j = ab->a->size - ab->j;
         ab->mov_a[ab->i] = ab->j;
-        printf("mov_a[%d] = %d\n", ab->i, ab->mov_a[ab->i]);
+        //printf("mov_a[%d] = %d\n", ab->i, ab->mov_a[ab->i]);
         ab->i++;
         ab->b->head = ab->b->head->next;
         ab->a->head = ab->a->tmp;

@@ -51,6 +51,7 @@ typedef struct s_ab
     int     j;
     int *mov_a;
     int *mov_b;
+    int rot_buff;
 }   t_ab;
 
 /* sorting default */

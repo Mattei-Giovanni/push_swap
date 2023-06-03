@@ -15,6 +15,7 @@
 int main(int argc, char **argv)
 {
     t_ab *ab;
+
     ab = malloc(sizeof(t_ab));
     init(ab);
     if (argc == 1)
@@ -38,10 +39,10 @@ int main(int argc, char **argv)
             else
                 first_phase(ab);
         }
-        printf("STACK A: \n");
+        /* printf("STACK A: \n");
         for(int i = 0; i < ab->a->size; i++)
         {
-            printf("%d ", ab->a->head->data);
+            printf("data: %d ", ab->a->head->data);
             printf("cost: %d\n", ab->a->head->cost);
             ab->a->head = ab->a->head->next;
         }
@@ -49,10 +50,10 @@ int main(int argc, char **argv)
         printf("STACK B: \n");
         for(int i = 0; i < ab->b->size; i++)
         {
-            printf("%d ", ab->b->head->data);
+            printf("data: %d ", ab->b->head->data);
             printf("cost: %d\n", ab->b->head->cost);
             ab->b->head = ab->b->head->next;
         }
-        printf("\n");
+        printf("\n"); */
     }
 }
