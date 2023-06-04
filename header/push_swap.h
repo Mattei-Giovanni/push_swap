@@ -48,6 +48,7 @@ typedef struct s_ab
     char    *pmove;
     int     i;
     int     j;
+    int     k;
     int     *mov_a;
     int     *mov_b;
     int     *mov_all;

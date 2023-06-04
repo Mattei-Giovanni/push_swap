@@ -17,7 +17,7 @@ void first_phase(t_ab *ab)
     not_recursive_sort(ab);
     //while(ab->a->size != ab->a->fixed_size)
     //{
-    for(int i = 0; i < 5; i++)
+    for(int i = 0; i < 1; i++)
     {
         move_cost_calc(ab);
         ab->i = 1;
@@ -28,7 +28,6 @@ void first_phase(t_ab *ab)
                 ab->count = ab->i;
             ab->i++;
         }
-
         while(ab->mov_b[ab->count] > 0)
         {
             if(ab->mov_b[ab->count] == 1 && ab->mov_a[ab->count + 1] < ab->mov_a[ab->count + 2])
@@ -39,14 +38,7 @@ void first_phase(t_ab *ab)
                 print_move(ab, "rrb");
             ab->mov_b[ab->count]--;
         }
-        while(ab->mov_a[ab->count] > 0)
-        {
-            print_move(ab, "ra");
-            ab->mov_a[ab->count]--;
-        }
         print_move(ab, "pa");
-
-        
     }
 }
 
@@ -111,6 +103,20 @@ void move_cost_calc(t_ab *ab)
         ab->a->head = ab->a->tmp;
     }
     ab->b->head = ab->b->tmp;
+    ab->i = 0;
+    get_new_max_b(ab);
+    while(ab->i < ab->b->size)
+    {
+        ab->b->tmp = ab->b->head;
+        while(ab->b->head->cost != ab->b->max)
+            ab->b->head = ab->b->head->next;
+        ab->mov_c[ab->i] = ab->i;
+        ab->mov_all[ab->i] = ab->mov_a[ab->i] + ab->mov_b[ab->i] + ab->mov_c[ab->i];
+        ab->b->head = ab->b->tmp;
+        ab->i++;
+        printf("mov_a: %d mov_b: %d mov_c: %d mov_all: %d\n", ab->mov_a[ab->i], ab->mov_b[ab->i], ab->mov_c[ab->i], ab->mov_all[ab->i]);
+        ab->b->max--;
+    }
 }
 
 void get_new_max_b(t_ab *ab)
@@ -118,6 +124,7 @@ void get_new_max_b(t_ab *ab)
     t_dbl_list *tmp;
 
     tmp = ab->b->head;
+    ab->b->max = ab->a->max;
     while(1)
     {
         while(ab->b->head)

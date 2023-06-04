@@ -44,6 +44,10 @@ int main(int argc, char **argv)
         {
             printf("data: %d ", ab->a->head->data);
             printf("cost: %d\n", ab->a->head->cost);
+            printf("mov_a: %d\n", ab->mov_a[i]);
+            printf("mov_b: %d\n", ab->mov_b[i]);
+            printf("mov_c: %d\n", ab->mov_c[i]);
+            printf("mov_all: %d\n", ab->mov_all[i]);
             ab->a->head = ab->a->head->next;
         }
         printf("\n");
@@ -52,6 +56,10 @@ int main(int argc, char **argv)
         {
             printf("data: %d ", ab->b->head->data);
             printf("cost: %d\n", ab->b->head->cost);
+            printf("mov_a: %d\n", ab->mov_a[i]);
+            printf("mov_b: %d\n", ab->mov_b[i]);
+            printf("mov_c: %d\n", ab->mov_c[i]);
+            printf("mov_all: %d\n", ab->mov_all[i]);
             ab->b->head = ab->b->head->next;
         }
         printf("\n"); */

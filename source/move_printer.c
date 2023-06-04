@@ -16,27 +16,27 @@ void    rotate_calc(t_ab *ab, char *move)
 {
     if(ab->rot_buff == 0 || (ab->rot_buff > 0 && ft_strcmp(ab->pmove, move) == 0))
             ab->rot_buff++;
-        else if(ft_strcmp(ab->pmove, move) > 15 || ft_strcmp(ab->pmove, move) < -15)
+    else if(ft_strcmp(ab->pmove, move) > 15 || ft_strcmp(ab->pmove, move) < -15)
+    {
+        ft_printf("%s\n", ab->pmove);
+        while(ab->rot_buff > 0)
         {
             ft_printf("%s\n", ab->pmove);
-            while(ab->rot_buff > 0)
-            {
-                ft_printf("%s\n", ab->pmove);
-                ab->rot_buff--;
-            }
-            ab->rot_buff = 1;
+            ab->rot_buff--;
         }
-        else
+        ab->rot_buff = 1;
+    }
+    else
+    {
+        while(ab->rot_buff > 0)
         {
-            while(ab->rot_buff > 0)
-            {
-                if(ft_strlen(move) == 2)
-                    ft_printf("rr\n");
-                else if(ft_strlen(move) == 3)
-                    ft_printf("rra\n");
-                ab->rot_buff--;
-            }
+            if(ft_strlen(move) == 2)
+                ft_printf("rr\n");
+            else if(ft_strlen(move) == 3)
+                ft_printf("rrr\n");
+            ab->rot_buff--;
         }
+    }
 }
 
 void    actually_print_move(t_ab *ab, char *move)
@@ -51,9 +51,7 @@ void    actually_print_move(t_ab *ab, char *move)
         ft_printf("%s\n", move);
     }
     else
-    {
         rotate_calc(ab, move);
-    }
     ab->pmove = move;
 }
 
