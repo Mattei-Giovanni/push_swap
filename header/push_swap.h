@@ -51,6 +51,7 @@ typedef struct s_ab
     int     *mov_a;
     int     *mov_b;
     int     *mov_all;
+    int     *mov_c;
     int     rot_buff;
 }   t_ab;
 
@@ -64,6 +65,7 @@ void    get_new_max(t_ab *ab);
 bool    is_sorted(t_ab *ab);
 bool    is_reverse_sorted(t_ab *ab);
 /* sorting advanced */
+void    get_new_max_b(t_ab *ab);
 void    first_phase(t_ab *ab);
 void    not_recursive_sort(t_ab *ab);
 void    move_cost_calc(t_ab *ab);

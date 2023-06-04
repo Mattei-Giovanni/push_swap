@@ -48,7 +48,7 @@ void    init(t_ab *ab)
     ab->b->size = 0;
     ab->a->max = 0;
     ab->a->min = 0;
-    ab->b->max = 0;
+    ab->b->max = 1;
     ab->b->min = 0;
     ab->sorted = true;
     ab->i = 0;

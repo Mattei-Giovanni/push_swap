@@ -39,7 +39,7 @@ int main(int argc, char **argv)
             else
                 first_phase(ab);
         }
-        printf("STACK A: \n");
+        /* printf("STACK A: \n");
         for(int i = 0; i < ab->a->size; i++)
         {
             printf("data: %d ", ab->a->head->data);
@@ -54,6 +54,6 @@ int main(int argc, char **argv)
             printf("cost: %d\n", ab->b->head->cost);
             ab->b->head = ab->b->head->next;
         }
-        printf("\n");
+        printf("\n"); */
     }
 }

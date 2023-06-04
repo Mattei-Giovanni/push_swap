@@ -20,7 +20,6 @@ void first_phase(t_ab *ab)
     for(int i = 0; i < 5; i++)
     {
         move_cost_calc(ab);
-        printf("START OTHER HALF\n");
         ab->i = 1;
         ab->count = 0;
         while(ab->i < ab->b->size)
@@ -29,13 +28,6 @@ void first_phase(t_ab *ab)
                 ab->count = ab->i;
             ab->i++;
         }
-        printf("count = %d\n", ab->count);
-        printf("mov_a = %d\n", ab->mov_a[ab->count]);
-        printf("mov_b = %d\n", ab->mov_b[ab->count]);
-        printf("mov_all = %d\n", ab->mov_all[ab->count]);
-        printf("cost = %d\n", ab->b->head->cost);
-
-
 
         while(ab->mov_b[ab->count] > 0)
         {
@@ -47,32 +39,14 @@ void first_phase(t_ab *ab)
                 print_move(ab, "rrb");
             ab->mov_b[ab->count]--;
         }
-        print_move(ab, "pa");
-
-
-        
-        /* if(ab->count > ab->b->size / 2)
-        {
-            while(ab->mov_b[ab->count] > 0)
-            {
-                print_move(ab, "rrb");
-                ab->mov_b[ab->count]--;
-            }
-        }
-        else
-        {
-            while(ab->mov_b[ab->count] > 0)
-            {
-                print_move(ab, "rb");
-                ab->mov_b[ab->count]--;
-            }
-        }
-        print_move(ab, "pa");
         while(ab->mov_a[ab->count] > 0)
         {
             print_move(ab, "ra");
             ab->mov_a[ab->count]--;
-        } */
+        }
+        print_move(ab, "pa");
+
+        
     }
 }
 
@@ -132,10 +106,31 @@ void move_cost_calc(t_ab *ab)
         if(ab->j >= ab->a->size / 2)
             ab->j = ab->a->size - ab->j;
         ab->mov_a[ab->i] = ab->j;
-        ab->mov_all[ab->i] = ab->mov_a[ab->i] + ab->mov_b[ab->i];
         ab->i++;
         ab->b->head = ab->b->head->next;
         ab->a->head = ab->a->tmp;
     }
     ab->b->head = ab->b->tmp;
+}
+
+void get_new_max_b(t_ab *ab)
+{
+    t_dbl_list *tmp;
+
+    tmp = ab->b->head;
+    while(1)
+    {
+        while(ab->b->head)
+        {
+            if(ab->b->head->data == ab->b->max)
+            {
+                ab->b->head = tmp;
+                return;
+            }
+            ab->b->head = ab->b->head->next;
+        }
+        ab->b->max--;
+        ab->b->head = tmp;
+    }
+    ab->b->head = tmp;
 }
